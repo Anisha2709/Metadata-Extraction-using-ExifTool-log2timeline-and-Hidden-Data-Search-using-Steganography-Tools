@@ -14,61 +14,51 @@ Apply steganography detection tools like steghide, zsteg, or binwalk to uncover 
 
 ## PROGRAM:
 Metadata and Timeline Forensics, Steganography Analysis Steps
-# A. Using ExifTool – for file metadata
+- **Installation :**
+```bash
+   sudo apt update
+   sudo apt install exiftool -y
+   sudo apt install plaso -y
+   sudo apt install steghide -y
+   sudo apt install binwalk -y
+ ```
+- **Extract metadata from a file:**
+```bash
+  exiftool image path
+  exiftool png.jpeg
+```
+- **Embed data**
+  ```
+  steghide embed -cf (image path) -ef (text file path)
+  steghide embed -cf /home/user/Desktop/test.jpeg -ef /home/user/Desktop/abc.txt
+  ```
+- **Extract hidden data:**
+  ```
+  steghide extract -sf (imamge path)
+  steghide extract -sf /home/user/Desktop/test.jpeg -p 12 -xf /home/user/Downloads/abc.txt
 
- Install:
-```
-sudo apt update
-sudo apt install exiftool -y
-```
- Extract metadata from a file:
-```
-exiftool image.jpg
-```
- Batch process a folder:
-```
-exiftool -r /path/to/folder
-```
-Useful flags:
-
--G: Show metadata group
-
--time:all: Show only timestamps
-
--GPSLatitude -GPSLongitude: Extract GPS data
-
-![image](https://github.com/user-attachments/assets/75dc64ee-7af7-4765-9ecf-0ee8eafec4af)
-
-# install log2timeline
-```
-sudo apt install plaso -y
-```
-```
-sudo apt install steghide -y
-```
-# Embed data
-```
-steghide embed -cf /home/kali/Downloads/wallpaper.jpg -ef /home/kali/Downloads/secret.txt
-```
-![image](https://github.com/user-attachments/assets/47166c87-4abe-4226-9529-141f1f602ec9)
-
-Extract hidden data:
-```
-steghide extract -sf hidden.jpg
-```
-![image](https://github.com/user-attachments/assets/f7d8e853-d26b-4226-93f2-ccd5d73b9de3)
-
-# Using binwalk – for file analysis
-
-```
-sudo apt install binwalk -y
-binwalk suspicious.jpg
-```
-![image](https://github.com/user-attachments/assets/7fcc7fe9-bf17-47e5-9405-3800b294a7ea)
-
+  ```
+- **Using binwalk – for file analysis**  
+  ```bash
+   binwalk png.jpeg
+  ```
+  
 ## OUTPUT:
-Extracted Metadata, Timeline Events, and Hidden Data Detection Results
-![image](https://github.com/user-attachments/assets/3273ce33-c3bf-4929-9fc4-b2056c1cf075)
+
+### Extraction of Metadata using exiftool
+![image](https://github.com/user-attachments/assets/045dcc72-8a21-4892-8738-f46395d8c4ee)
+
+
+### Data Embedding in Image
+![image](https://github.com/user-attachments/assets/063f6f2e-2cc4-414a-8020-d42ffbf3af9c)
+
+
+### Extraction of hidden data
+![image](https://github.com/user-attachments/assets/73f62ace-695d-4867-bedf-3aefafba14a7)
+
+### Using binwalk – for file analysis
+![image](https://github.com/user-attachments/assets/6692af4f-7bbe-4708-864d-e5643960aaad)
+
 
 ## RESULT:
 Metadata was successfully extracted, timeline analysis was completed, and hidden data was identified using steganography tools.
